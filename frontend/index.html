@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Resume Engine</title>
+    <link rel="stylesheet" href="/assets/styles.css?v=20260423-2" />
+  </head>
+  <body>
+    <main id="dashboard" class="dashboard">
+      <aside id="sidebar" class="sidebar">
+        <div>
+          <div class="brand">
+            <div class="brand-mark"></div>
+            <span>ResumeFlow</span>
+          </div>
+          <nav class="nav">
+            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link" href="#">Candidates</a>
+            <a class="nav-link" href="#">Analytics</a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <p>AI Resume Engine</p>
+          <p class="muted-small">Smart resume parsing and matching</p>
+        </div>
+      </aside>
+
+      <section class="main-content">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button id="sidebarToggle" type="button" class="btn btn-ghost" aria-label="Toggle sidebar">
+              ☰
+            </button>
+            <div>
+            <h1>Resume Dashboard</h1>
+            <p class="muted">Upload resumes, review parsed skills, and track analysis status.</p>
+            </div>
+          </div>
+          <button id="refreshBtn" type="button" class="btn btn-primary">Refresh</button>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <p class="stat-label">Total Resumes</p>
+            <p class="stat-value" id="totalResumes">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Analyzed</p>
+            <p class="stat-value" id="analyzedResumes">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Pending/Failed</p>
+            <p class="stat-value" id="pendingResumes">0</p>
+          </article>
+        </section>
+
+        <section class="card">
+          <div class="header-row">
+            <h2>Upload Resume</h2>
+          </div>
+          <form id="uploadForm" class="upload-grid">
+            <div class="row">
+              <label for="userId">User ID</label>
+              <input id="userId" name="user_id" type="number" min="1" value="1" />
+            </div>
+            <div class="row">
+              <label for="resumeFile">File (.pdf/.docx/.txt)</label>
+              <input id="resumeFile" name="file" type="file" accept=".pdf,.docx,.txt" required />
+            </div>
+            <div class="row row-button">
+              <button type="submit" class="btn btn-primary">Upload Resume</button>
+            </div>
+          </form>
+          <p id="uploadMessage" class="message"></p>
+          <hr class="section-divider" />
+          <div class="header-row">
+            <h2>Analyze Job URL</h2>
+          </div>
+          <form id="urlForm" class="url-grid">
+            <div class="row">
+              <label for="jobUrl">Job URL</label>
+              <input
+                id="jobUrl"
+                name="url"
+                type="url"
+                placeholder="https://company.com/jobs/backend-developer"
+                required
+              />
+            </div>
+            <div class="row row-button">
+              <button type="submit" class="btn btn-primary">Analyze URL</button>
+            </div>
+          </form>
+          <p id="urlMessage" class="message"></p>
+        </section>
+
+        <section class="card">
+          <div class="header-row">
+            <h2>Resumes</h2>
+          </div>
+          <div id="listMessage" class="message"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>File</th>
+                  <th>Status</th>
+                  <th>Match %</th>
+                  <th>Created At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="resumeTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Resume Detail</h2>
+          <div id="resumeDetail" class="resume-detail-empty">Select "View" from the list above.</div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/assets/app.js?v=20260423-3"></script>
+  </body>
+</html>
